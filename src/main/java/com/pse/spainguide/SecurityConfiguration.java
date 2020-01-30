@@ -17,17 +17,12 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/api/example/hello-world").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+        http.authorizeRequests()
+            .antMatchers("/admin", "/api/**").authenticated()
+            .and()
+            .formLogin().loginPage("/login").permitAll()
+            .and()
+            .logout().permitAll();
     }
 
     @Autowired
