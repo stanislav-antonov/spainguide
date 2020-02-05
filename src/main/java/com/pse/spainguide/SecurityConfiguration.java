@@ -20,7 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/admin", "/api/**").authenticated()
             .and()
-            .formLogin().loginPage("/login").permitAll()
+            .formLogin().loginPage("/admin/login").permitAll()
             .and()
             .logout().permitAll();
     }
