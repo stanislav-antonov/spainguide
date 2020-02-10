@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.pse.spainguide.FileStorageProperties;
+import com.pse.spainguide.configuration.FileStorageConfiguration;
 import com.pse.spainguide.exception.FileStorageException;
 
 @Service
@@ -23,8 +23,8 @@ public class FileStorageService implements IFileStorageService {
     final private Path fileBasePath;
 
     @Autowired
-    public FileStorageService(FileStorageProperties fileStorageProperties) {
-        this.fileBasePath = fileStorageProperties.getNormalizedBasePath();
+    public FileStorageService(FileStorageConfiguration fileStorageConfiguration) {
+        this.fileBasePath = fileStorageConfiguration.getNormalizedBasePath();
         ensureBaseDirectory();
     }
 

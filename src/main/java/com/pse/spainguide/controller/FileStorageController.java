@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,6 +24,7 @@ import com.pse.spainguide.response.FileUploadResponse;
 import com.pse.spainguide.service.IFileStorageService;
 
 @RestController
+@RequestMapping("/file-storage")
 public class FileStorageController {
 
     private static final Logger logger = LoggerFactory.getLogger(FileStorageController.class);
@@ -38,7 +40,7 @@ public class FileStorageController {
     public FileUploadResponse store(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.store(file);
         String fileUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/load-file/").path(fileName).build().toUriString();
+                .path("/file-storage/load-file/").path(fileName).build().toUriString();
 
         return new FileUploadResponse(fileName, fileUri, file.getContentType(), file.getSize());
     }
@@ -59,7 +61,7 @@ public class FileStorageController {
         try {
             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
         } catch (IOException ex) {
-            logger.info("Could not determine file type.");
+            logger.info("Could not determine file type");
         }
 
         if (contentType == null) {

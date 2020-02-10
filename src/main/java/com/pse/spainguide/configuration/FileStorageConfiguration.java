@@ -1,4 +1,4 @@
-package com.pse.spainguide;
+package com.pse.spainguide.configuration;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "file-storage")
-public class FileStorageProperties {
+public class FileStorageConfiguration {
 
     final private static Path defaultBasePath = Paths.get("resources","static", "file-storage");
 

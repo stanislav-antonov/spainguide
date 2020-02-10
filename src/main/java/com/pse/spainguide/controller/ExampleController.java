@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/example")
 public class ExampleController {
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
