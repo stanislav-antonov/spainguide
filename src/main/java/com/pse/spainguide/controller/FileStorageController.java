@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.pse.spainguide.response.FileUploadResponse;
+import com.pse.spainguide.response.FileStoreResponse;
 import com.pse.spainguide.service.IFileStorageService;
 
 @RestController
@@ -37,12 +37,12 @@ public class FileStorageController {
     }
 
     @PostMapping("/store-file")
-    public FileUploadResponse store(@RequestParam("file") MultipartFile file) {
+    public FileStoreResponse store(@RequestParam("file") MultipartFile file) {
         String fileName = fileStorageService.store(file);
         String fileUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/file-storage/load-file/").path(fileName).build().toUriString();
 
-        return new FileUploadResponse(fileName, fileUri, file.getContentType(), file.getSize());
+        return new FileStoreResponse(fileName, fileUri, file.getContentType(), file.getSize());
     }
 
     @GetMapping("/load-file/{fileName:.+}")
