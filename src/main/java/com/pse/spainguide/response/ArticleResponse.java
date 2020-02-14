@@ -1,5 +1,7 @@
 package com.pse.spainguide.response;
 
+import java.sql.Date;
+
 public class ArticleResponse {
     private long id;
     private String headline;
@@ -10,6 +12,8 @@ public class ArticleResponse {
     private String content;
     private boolean active;
     private String imageUri;
+    private Date created;
+    private Date updated;
 
     public void setId(long id) {
         this.id = id;
@@ -47,6 +51,14 @@ public class ArticleResponse {
         this.imageUri = imageUri;
     }
 
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
     public long getId() {
         return id;
     }
@@ -81,6 +93,14 @@ public class ArticleResponse {
 
     public String getImageUri() {
         return imageUri;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public Date getUpdated() {
+        return updated;
     }
 }
 
