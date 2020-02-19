@@ -32,6 +32,9 @@ public class ArticleEntity {
     private Date created;
     private Date updated;
 
+    // For auto-mapper
+    public ArticleEntity() {}
+
     public ArticleEntity(long id, String headline, String alias, String title, String description,
             String preview, String content, boolean active, String imageUri, Date created, Date updated) {
         this.id = id;

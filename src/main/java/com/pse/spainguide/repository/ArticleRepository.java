@@ -20,7 +20,29 @@ public class ArticleRepository {
     private JdbcTemplate jdbcTemplate;
 
     public void create(ArticleEntity article) {
-
+        jdbcTemplate.update(
+                "INSERT INTO " +
+                        ArticleEntity.Table +
+                        "(" +
+                            ArticleEntity.Columns.Headline + ", " +
+                            ArticleEntity.Columns.Alias + ", " +
+                            ArticleEntity.Columns.Title + ", " +
+                            ArticleEntity.Columns.Description + ", " +
+                            ArticleEntity.Columns.Preview + ", " +
+                            ArticleEntity.Columns.Content + ", " +
+                            ArticleEntity.Columns.Active + ", " +
+                            ArticleEntity.Columns.ImageUri +
+                        ") " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                article.getHeadline(),
+                article.getAlias(),
+                article.getTitle(),
+                article.getDescription(),
+                article.getPreview(),
+                article.getContent(),
+                article.getActive(),
+                article.getImageUri()
+        );
     }
 
     public void update(ArticleEntity article) {
