@@ -1,9 +1,6 @@
 package com.pse.spainguide.entity;
 
-import java.net.URI;
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class ArticleEntity {
 
@@ -31,28 +28,12 @@ public class ArticleEntity {
     private String preview;
     private String content;
     private boolean active;
-    private URI imageUri;
+    private String imageUri;
     private Date created;
     private Date updated;
 
-    public static ArticleEntity create(ResultSet rs) throws SQLException {
-        return new ArticleEntity(
-                rs.getLong(Columns.Id),
-                rs.getString(Columns.Headline),
-                rs.getString(Columns.Alias),
-                rs.getString(Columns.Title),
-                rs.getString(Columns.Description),
-                rs.getString(Columns.Preview),
-                rs.getString(Columns.Content),
-                rs.getBoolean(Columns.Active),
-                URI.create(rs.getString(Columns.ImageUri)),
-                rs.getDate(Columns.Created),
-                rs.getDate(Columns.Updated)
-        );
-    }
-
     public ArticleEntity(long id, String headline, String alias, String title, String description,
-            String preview, String content, boolean active, URI imageUri, Date created, Date updated) {
+            String preview, String content, boolean active, String imageUri, Date created, Date updated) {
         this.id = id;
         this.headline = headline;
         this.alias = alias;
@@ -98,7 +79,7 @@ public class ArticleEntity {
         return active;
     }
 
-    public URI getImageUri() {
+    public String getImageUri() {
         return imageUri;
     }
 

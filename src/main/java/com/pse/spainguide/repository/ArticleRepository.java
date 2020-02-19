@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.pse.spainguide.entity.ArticleEntity;
+import com.pse.spainguide.entity.ArticleEntityMapper;
 
 @Component
 public class ArticleRepository {
@@ -17,6 +18,14 @@ public class ArticleRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public void create(ArticleEntity article) {
+
+    }
+
+    public void update(ArticleEntity article) {
+
+    }
 
     public Collection<ArticleEntity> getList() {
         return jdbcTemplate.query("SELECT " +
@@ -32,7 +41,7 @@ public class ArticleRepository {
                         ArticleEntity.Columns.Created + ", " +
                         ArticleEntity.Columns.Updated +
                         " FROM " + ArticleEntity.Table,
-                (rs, rowNum) -> ArticleEntity.create(rs)
+                new ArticleEntityMapper()
         );
     }
 }
