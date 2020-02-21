@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,5 +74,24 @@ public class ArticleRepository {
                         " FROM " + ArticleEntity.Table,
                 new ArticleEntityMapper()
         );
+    }
+
+    public Optional<ArticleEntity> getOne(int id) {
+        return jdbcTemplate.query("SELECT " +
+                        ArticleEntity.Columns.Id + ", " +
+                        ArticleEntity.Columns.Headline + ", " +
+                        ArticleEntity.Columns.Alias + ", " +
+                        ArticleEntity.Columns.Title + ", " +
+                        ArticleEntity.Columns.Description + ", " +
+                        ArticleEntity.Columns.Preview + ", " +
+                        ArticleEntity.Columns.Content + ", " +
+                        ArticleEntity.Columns.Active + ", " +
+                        ArticleEntity.Columns.Image + ", " +
+                        ArticleEntity.Columns.Created + ", " +
+                        ArticleEntity.Columns.Updated +
+                        " FROM " + ArticleEntity.Table + " WHERE id = ?",
+                new Object[] { id },
+                new ArticleEntityMapper()
+        ).stream().findFirst();
     }
 }

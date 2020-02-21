@@ -3,10 +3,12 @@ package com.pse.spainguide.controller;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pse.spainguide.entity.ArticleEntity;
+import com.pse.spainguide.exception.ResourceNotFoundException;
 import com.pse.spainguide.repository.ArticleRepository;
 import com.pse.spainguide.request.ArticleRequest;
 import com.pse.spainguide.response.ArticleResponse;
@@ -34,6 +37,14 @@ public class ArticleController {
         response.put("id", id);
 
         return response;
+    }
+
+    @GetMapping("/one/{id:.+}")
+    public ArticleResponse one(@PathVariable int id) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArticleEntity articleEntity = articleRepository.getOne(id).orElseThrow(ResourceNotFoundException::new);
+
+        return objectMapper.convertValue(articleEntity, ArticleResponse.class);
     }
 
     @GetMapping("/list")
