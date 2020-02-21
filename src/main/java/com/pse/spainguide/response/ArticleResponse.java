@@ -11,7 +11,7 @@ public class ArticleResponse {
     private String preview;
     private String content;
     private boolean active;
-    private String imageUri;
+    private String image;
     private Date created;
     private Date updated;
 
@@ -47,8 +47,8 @@ public class ArticleResponse {
         this.active = active;
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setCreated(Date created) {
@@ -91,8 +91,8 @@ public class ArticleResponse {
         return active;
     }
 
-    public String getImageUri() {
-        return imageUri;
+    public String getImage() {
+        return image;
     }
 
     public Date getCreated() {

@@ -9,7 +9,7 @@ public class ArticleRequest {
     private String preview;
     private String content;
     private boolean active;
-    private String imageUri;
+    private String image;
 
     public void setId(long id) {
         this.id = id;
@@ -43,8 +43,8 @@ public class ArticleRequest {
         this.active = active;
     }
 
-    public void setImageUri(String imageUri) {
-        this.imageUri = imageUri;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public long getId() {
@@ -79,8 +79,8 @@ public class ArticleRequest {
         return active;
     }
 
-    public String getImageUri() {
-        return imageUri;
+    public String getImage() {
+        return image;
     }
 }
 

@@ -16,7 +16,7 @@ public class ArticleEntityMapper implements RowMapper<ArticleEntity> {
                 rs.getString(ArticleEntity.Columns.Preview),
                 rs.getString(ArticleEntity.Columns.Content),
                 rs.getBoolean(ArticleEntity.Columns.Active),
-                rs.getString(ArticleEntity.Columns.ImageUri),
+                rs.getString(ArticleEntity.Columns.Image),
                 rs.getDate(ArticleEntity.Columns.Created),
                 rs.getDate(ArticleEntity.Columns.Updated)
         );

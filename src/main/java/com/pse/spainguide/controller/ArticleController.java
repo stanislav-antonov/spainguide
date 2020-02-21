@@ -1,6 +1,8 @@
 package com.pse.spainguide.controller;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +26,14 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @PostMapping("/create")
-    public void create(@RequestBody ArticleRequest article) {
+    public Map<String, Integer> create(@RequestBody ArticleRequest article) {
         ObjectMapper objectMapper = new ObjectMapper();
         ArticleEntity articleEntity = objectMapper.convertValue(article, ArticleEntity.class);
-        articleRepository.create(articleEntity);
+        int id = articleRepository.create(articleEntity);
+        Map<String, Integer> response = new HashMap<>();
+        response.put("id", id);
+
+        return response;
     }
 
     @GetMapping("/list")

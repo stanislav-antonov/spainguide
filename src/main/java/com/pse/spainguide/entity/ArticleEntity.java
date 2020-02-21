@@ -15,7 +15,7 @@ public class ArticleEntity {
         public final static String Preview = "preview";
         public final static String Content = "content";
         public final static String Active = "active";
-        public final static String ImageUri = "imageUri";
+        public final static String Image = "image";
         public final static String Created = "created";
         public final static String Updated = "updated";
     }
@@ -28,7 +28,7 @@ public class ArticleEntity {
     private String preview;
     private String content;
     private boolean active;
-    private String imageUri;
+    private String image;
     private Date created;
     private Date updated;
 
@@ -36,7 +36,7 @@ public class ArticleEntity {
     public ArticleEntity() {}
 
     public ArticleEntity(long id, String headline, String alias, String title, String description,
-            String preview, String content, boolean active, String imageUri, Date created, Date updated) {
+            String preview, String content, boolean active, String image, Date created, Date updated) {
         this.id = id;
         this.headline = headline;
         this.alias = alias;
@@ -45,7 +45,7 @@ public class ArticleEntity {
         this.preview = preview;
         this.content = content;
         this.active = active;
-        this.imageUri = imageUri;
+        this.image = image;
         this.created = created;
         this.updated = updated;
     }
@@ -82,8 +82,8 @@ public class ArticleEntity {
         return active;
     }
 
-    public String getImageUri() {
-        return imageUri;
+    public String getImage() {
+        return image;
     }
 
     public Date getCreated() {
