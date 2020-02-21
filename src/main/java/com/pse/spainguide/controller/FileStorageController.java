@@ -24,7 +24,7 @@ import com.pse.spainguide.response.FileStoreResponse;
 import com.pse.spainguide.service.IFileStorageService;
 
 @RestController
-@RequestMapping("/file-storage")
+@RequestMapping("/api/file-storage")
 public class FileStorageController {
 
     private static final Logger logger = LoggerFactory.getLogger(FileStorageController.class);

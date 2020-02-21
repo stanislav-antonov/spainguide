@@ -25,7 +25,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         AuthenticationManager authenticationManager = authenticationManager();
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                    .anyRequest().authenticated()
+                .antMatchers("/", "/file-storage/**").permitAll()
+                .anyRequest().authenticated()
                     .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager))
