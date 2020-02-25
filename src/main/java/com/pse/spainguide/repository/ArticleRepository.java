@@ -55,7 +55,25 @@ public class ArticleRepository {
     }
 
     public void update(ArticleEntity article) {
-
+        jdbcTemplate.update("UPDATE " + ArticleEntity.Table + " SET " +
+                ArticleEntity.Columns.Headline + " = ?, " +
+                ArticleEntity.Columns.Alias + " = ?, " +
+                ArticleEntity.Columns.Title + " = ?, " +
+                ArticleEntity.Columns.Description + " = ?, " +
+                ArticleEntity.Columns.Preview + " = ?, " +
+                ArticleEntity.Columns.Content + " = ?, " +
+                ArticleEntity.Columns.Active + " = ?, " +
+                ArticleEntity.Columns.Image + " = ? " +
+            " WHERE id = ? ",
+                article.getHeadline(),
+                article.getAlias(),
+                article.getTitle(),
+                article.getDescription(),
+                article.getPreview(),
+                article.getContent(),
+                article.getActive(),
+                article.getImage(),
+                article.getId());
     }
 
     public Collection<ArticleEntity> getList() {

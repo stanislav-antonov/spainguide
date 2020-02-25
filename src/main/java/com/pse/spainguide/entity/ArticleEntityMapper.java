@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 public class ArticleEntityMapper implements RowMapper<ArticleEntity> {
     public ArticleEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new ArticleEntity(
-                rs.getLong(ArticleEntity.Columns.Id),
+                rs.getInt(ArticleEntity.Columns.Id),
                 rs.getString(ArticleEntity.Columns.Headline),
                 rs.getString(ArticleEntity.Columns.Alias),
                 rs.getString(ArticleEntity.Columns.Title),

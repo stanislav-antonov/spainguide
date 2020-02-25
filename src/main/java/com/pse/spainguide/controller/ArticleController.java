@@ -3,7 +3,6 @@ package com.pse.spainguide.controller;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +34,17 @@ public class ArticleController {
         int id = articleRepository.create(articleEntity);
         Map<String, Integer> response = new HashMap<>();
         response.put("id", id);
+
+        return response;
+    }
+
+    @PostMapping("/update/{id:.+}")
+    public Map<String, Integer> update(@RequestBody ArticleRequest article, @PathVariable int id) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArticleEntity articleEntity = objectMapper.convertValue(article, ArticleEntity.class);
+        articleRepository.update(articleEntity);
+        Map<String, Integer> response = new HashMap<>();
+        response.put("id", articleEntity.getId());
 
         return response;
     }

@@ -20,7 +20,7 @@ public class ArticleEntity {
         public final static String Updated = "updated";
     }
 
-    private long id;
+    private int id;
     private String headline;
     private String alias;
     private String title;
@@ -35,7 +35,7 @@ public class ArticleEntity {
     // For auto-mapper
     public ArticleEntity() {}
 
-    public ArticleEntity(long id, String headline, String alias, String title, String description,
+    public ArticleEntity(int id, String headline, String alias, String title, String description,
             String preview, String content, boolean active, String image, Date created, Date updated) {
         this.id = id;
         this.headline = headline;
@@ -50,7 +50,7 @@ public class ArticleEntity {
         this.updated = updated;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

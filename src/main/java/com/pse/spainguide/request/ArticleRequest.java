@@ -1,7 +1,7 @@
 package com.pse.spainguide.request;
 
 public class ArticleRequest {
-    private long id;
+    private int id;
     private String headline;
     private String alias;
     private String title;
@@ -11,7 +11,7 @@ public class ArticleRequest {
     private boolean active;
     private String image;
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,7 +47,7 @@ public class ArticleRequest {
         this.image = image;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

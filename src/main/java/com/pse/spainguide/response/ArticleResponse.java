@@ -3,7 +3,7 @@ package com.pse.spainguide.response;
 import java.sql.Date;
 
 public class ArticleResponse {
-    private long id;
+    private int id;
     private String headline;
     private String alias;
     private String title;
@@ -15,7 +15,7 @@ public class ArticleResponse {
     private Date created;
     private Date updated;
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -59,7 +59,7 @@ public class ArticleResponse {
         this.updated = updated;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
